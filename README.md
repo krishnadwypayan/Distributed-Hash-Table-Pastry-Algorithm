@@ -71,40 +71,48 @@ closest larger node IDs and L/2 nodes with numerically smaller node IDs.
 Neighbourhood set M contains the node IDs and the IP addresses of the |M|
 nodes that are closest to the local node. This set is normally not used
 in routing messages, but it is useful in maintaining locality properties.
+
 Routing Algorithm:
-1. Send the join request to the neighbours.
-2. Maximal prefix matching of the node ID with its neighbouring node ID
-in the leaf set.
-1. If found in leaf set
-1. Send the join request to the neighbours
-2. Send the routing table to the neighbours
-2. Else
-1. Search in routing table based on prefix
-2. Send the routing table and join request to all the corresponding
-nodes in the matched prefix row.
-3. Else if not found anywhere
-1. Create an entry in neighbourhood set
-2. Send the join request to every node present in neighbourhood
-set.
-Our Implementation of Pastry:
+  1. Send the join request to the neighbours.
+  2. Maximal prefix matching of the node ID with its neighbouring node ID
+      in the leaf set.
+        1. If found in leaf set
+            1. Send the join request to the neighbours
+            2. Send the routing table to the neighbours
+        2. Else
+            1. Search in routing table based on prefix
+            2. Send the routing table and join request to all the corresponding
+                nodes in the matched prefix row.
+        3. Else if not found anywhere
+            1. Create an entry in neighbourhood set
+            2. Send the join request to every node present in neighbourhood
+                set.
+                
+               
 Functions-
 1. Port <X>
-creating a node which has its listening port as X.
+    creating a node which has its listening port as X.
+
 2. Join <Node ID> <IP> <Port>
-Joining a new node to the existing network that has Node ID, IP and
-a listening Port.
+    Joining a new node to the existing network that has Node ID, IP and a listening Port.
+  
 3. Put <key> <value>
-Store the key value pair with matched prefix Node ID
+    Store the key value pair with matched prefix Node ID
+
 4. Get <key>
-Retrieve the key value pair with matched prefix Node ID
+    Retrieve the key value pair with matched prefix Node ID
+
 5. lset
-Prints the leaf set of a pastry node.
+    Prints the leaf set of a pastry node.
+
 6. nset
-Prints the neighbourhood set of a pastry node.
+    Prints the neighbourhood set of a pastry node.
+
 7. routetable
-Prints the routing table of a pastry node.
+    Prints the routing table of a pastry node.
+
 8. quit
-Deletes a pastry node and moves its data to one of its
-neighbourhood nodes.
+    Deletes a pastry node and moves its data to one of its neighbourhood nodes.
+
 9. shutdown
-Shuts down the entire pastry network.
+    Shuts down the entire pastry network.
